@@ -4,8 +4,9 @@ FROM hashicorp/vault:latest
 USER root
 RUN apk add --no-cache shadow
 
-# Create a non-root user
-RUN groupadd vault && useradd -g vault -s /bin/false vault
+# Check and create group & user if they don't exist
+RUN getent group vault || groupadd vault
+RUN getent passwd vault || useradd -g vault -s /bin/false vault
 
 # Set permissions and switch to the vault user
 USER vault
