@@ -1,8 +1,7 @@
+FROM vault:latest
 
-FROM hashicorp/vault:latest
-
-
+# Expose Vault port
 EXPOSE 8200
 
-
-ENTRYPOINT ["vault", "server", "-dev", "-dev-root-token-id=root"]
+# Set Vault to development mode (for testing purposes)
+CMD ["vault", "server", "-dev", "-dev-root-token-id=root"]
