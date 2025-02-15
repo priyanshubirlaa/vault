@@ -4,4 +4,5 @@ FROM hashicorp/vault:latest
 EXPOSE 8200
 
 # Start Vault in development mode (not for production)
-CMD ["vault", "server", "-dev", "-dev-root-token-id=root"]
+CMD ["vault", "server", "-config=/app/config.hcl"]
+
