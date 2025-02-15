@@ -8,9 +8,6 @@ RUN apk add --no-cache shadow
 RUN getent group vault || groupadd vault
 RUN getent passwd vault || useradd -g vault -s /bin/false vault
 
-# Remove capabilities that cause errors on Render
-RUN setcap -r /bin/vault || true
-
 # Set permissions and switch to the vault user
 USER vault
 
