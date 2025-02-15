@@ -1,13 +1,15 @@
-
 FROM hashicorp/vault:latest
 
-# Install shadow package (needed for useradd on Alpine)
+# Install necessary packages (Alpine-based)
 USER root
 RUN apk add --no-cache shadow
 
 # Check and create group & user if they don't exist
 RUN getent group vault || groupadd vault
 RUN getent passwd vault || useradd -g vault -s /bin/false vault
+
+# Remove capabilities that cause errors on Render
+RUN setcap -r /bin/vault || true
 
 # Set permissions and switch to the vault user
 USER vault
