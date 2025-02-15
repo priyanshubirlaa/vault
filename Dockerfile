@@ -1,3 +1,4 @@
+
 FROM hashicorp/vault:latest
 
 # Install shadow package (needed for useradd on Alpine)
