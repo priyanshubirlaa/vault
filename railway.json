@@ -1,0 +1,9 @@
+{
+  "services": {
+    "vault": {
+      "env": {
+        "VAULT_DEV_ROOT_TOKEN_ID": "root"
+      }
+    }
+  }
+}
